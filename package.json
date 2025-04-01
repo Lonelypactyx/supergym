@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "dev": "vite --host --open",
     "test": "backstop test --config=pp.config.cjs",
     "test-js": "backstop test --config=js.config.cjs",
@@ -30,6 +31,7 @@
     "cli-progress": "3.12.0",
     "eslint": "8.57.0",
     "eslint-config-htmlacademy": "10.0.1",
+    "gh-pages": "^6.3.0",
     "glob": "10.3.10",
     "gulp-html-bemlinter": "3.0.1",
     "html-validate": "8.11.1",
