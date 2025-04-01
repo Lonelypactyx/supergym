@@ -1,0 +1,150 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font: 300 14px/22px "RobotoCondensed", sans-serif;
+  color: $main-color;
+  margin: 0;
+
+  @media (min-width: $tablet) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.block-wrapper {
+  width: 320px;
+  margin-inline: auto;
+
+  @media (min-width: $tablet) {
+    width: $tablet;
+    padding-inline: 45px;
+  }
+
+  @media (min-width: $desktop) {
+    width: $desktop;
+    padding-inline: 103px;
+  }
+}
+
+.section-title {
+  font: 600 32px/1 $alumni;
+  text-align: center;
+
+  @media (min-width: $tablet) {
+    font-size: 42px;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: 54px;
+  }
+}
+
+.arrow-btn {
+  background-color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  &--next {
+    transform: scale(-1, 1);
+  }
+
+  &::after {
+    width: 100%;
+    height: 100%;
+    background-color: $main-color;
+    mask: url("data:image/svg+xml,%3Csvg width='18' height='34' viewBox='0 0 18 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 1L0.999999 17L17 33' stroke='%23102654'/%3E%3C/svg%3E") no-repeat center;
+  }
+
+  &:not(:disabled) {
+    &:focus-visible {
+      background-color: #e8e8e8;
+      outline: none;
+      border: 1px solid $main-color;
+    }
+
+    &:hover {
+      border: 1px solid $main-color;
+    }
+
+    &:active {
+      background-color: $main-color;
+
+      &::after {
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &::after {
+      background-color: rgba(16, 38, 84, 0.3);
+    }
+  }
+
+  @media (width < $tablet) {
+    display: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+:root {
+  --swiper-navigation-size: 0;
+  --swiper-navigation-top-offset: 52%;
+  --swiper-navigation-sides-offset: 34px;
+  --swiper-navigation-color: $main-color;
+
+  @media (min-width: $desktop) {
+    --swiper-navigation-top-offset: 53.8%;
+    --swiper-navigation-sides-offset: 33px;
+  }
+}

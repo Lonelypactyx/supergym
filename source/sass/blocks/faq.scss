@@ -1,0 +1,218 @@
+.faq {
+  background-color: $section-bg;
+}
+
+.faq__wrapper {
+  display: grid;
+
+  @media (width < $tablet) {
+    padding: 70px 15px;
+    padding-top: 72px;
+    gap: 34px;
+  }
+
+  @media (min-width: $tablet) {
+    padding-block: 60px;
+    gap: 45px;
+  }
+
+  @media (min-width: $desktop) {
+    grid-template-columns: 260px 860px;
+    padding-block: 100px;
+    gap: 50px 40px;
+  }
+}
+
+.faq__title {
+  @media (min-width: $desktop) {
+    text-align: left;
+    grid-column: 1 / span 2;
+  }
+}
+
+.faq__tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+
+  @media (min-width: $tablet) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: $desktop) {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+}
+
+.faq__tab {
+  display: grid;
+  background-color: transparent;
+  border: 1px solid rgba(16, 38, 84, 0.2);
+  font: 400 16px/1 $roboto;
+  color: $main-color;
+  padding: 14px;
+  width: 100%;
+  justify-items: center;
+
+  &:not(:disabled) {
+    &:focus-visible,
+    &:hover {
+      border-color: $main-color;
+      outline: none;
+    }
+  }
+
+  &:disabled {
+    color: #c8c9cc;
+  }
+
+  @media (min-width: $tablet) {
+    font-size: 18px;
+    padding: 17px;
+  }
+
+  @media (min-width: $desktop) {
+    padding-block: 20px 14px;
+  }
+}
+
+.faq__tab--current {
+  color: #ffffff;
+  background: linear-gradient(120deg, $accent-bg 20%, #003eb7 95%);
+  border-color: transparent;
+  background-origin: border-box;
+  pointer-events: none;
+}
+
+.faq__details-list {
+  display: none;
+  margin-top: 1px;
+  border-top: 1px solid $divider;
+}
+
+.faq__details-list--current {
+  display: grid;
+}
+
+.faq__details {
+  overflow: hidden;
+  border-bottom: 1px solid $divider;
+  padding-block: 20px;
+  transition: 0.5s;
+
+  &[open] {
+    padding-bottom: 100px;
+  }
+
+  @media (min-width: $tablet) {
+    padding-block: 24px 22px;
+  }
+
+  @media (min-width: $desktop) {
+    padding-top: 23px;
+  }
+}
+
+.faq__details summary {
+  @include flex-between;
+
+  gap: 25px;
+  list-style: none;
+  font: 400 20px/1 $roboto;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &::after {
+    @include pseudoblock;
+
+    position: relative;
+    top: -2px;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $secondary;
+    border-radius: 50%;
+    background-color: #ffffff;
+    background-image:
+      linear-gradient($secondary, $secondary),
+      linear-gradient($secondary, $secondary);
+    background-position: center;
+    background-size: 50% 1px, 1px 50%;
+    background-repeat: no-repeat;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    background-color: $divider;
+    background-image:
+      linear-gradient(#ffffff, #ffffff),
+      linear-gradient(#ffffff, #ffffff);
+  }
+
+  &:hover::after {
+    background-color: $secondary;
+    background-image:
+      linear-gradient(#ffffff, #ffffff),
+      linear-gradient(#ffffff, #ffffff);
+  }
+
+  @media (min-width: $tablet) {
+    font-size: 22px;
+    gap: 55px;
+
+    &::after {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    font-size: 24px;
+  }
+}
+
+.faq__details[open] summary {
+  margin-bottom: 20px;
+
+  &::after {
+    background-color: $secondary;
+    background-image: linear-gradient(#ffffff, #ffffff);
+    background-size: 50% 1px;
+  }
+
+  @media (min-width: $tablet) {
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: $desktop) {
+    margin-bottom: 23px;
+  }
+}
+
+.faq__details p {
+  font-size: 16px;
+  line-height: 1.25;
+  opacity: 0;
+  margin-bottom: -80px;
+  padding-right: 50px;
+  transition: 0.5s;
+
+  @media (min-width: $tablet) {
+    font-size: 18px;
+    line-height: 1.33;
+    padding-right: 110px;
+    margin-bottom: -78px;
+  }
+
+  @media (min-width: $desktop) {
+    padding-right: 200px;
+  }
+}
+
+.faq__details[open] p {
+  opacity: 1;
+}
